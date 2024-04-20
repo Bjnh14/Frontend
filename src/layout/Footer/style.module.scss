@@ -1,33 +1,5 @@
 .footer {
-    background-color: #6e6868;
-    /* Màu nền */
-    color: white;
-    /* Màu chữ */
-
-    /* Căn giữa nội dung */
-    display: flex;
-    justify-content: center;
-
-    flex-direction: column;
-    height: 100%;
-    margin: 20px;
-    /* Chiều cao */
-}
-
-h1 {
-    font-size: 50px;
-    /* Kích thước font chữ */
-    margin-bottom: 5px;
-    /* Khoảng cách giữa các tiêu đề */
-    margin: auto;
-}
-
-h2 {
-    font-size: 18px;
-    font-style: italic;
-    /* Font chữ in nghiêng */
-}
-
-p {
-    font-size: 14px;
+  background-color: #6e6868;
+  height: 100%;
+  padding: 20px;
 }

@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const callAPIWithToken = axios.create({
   baseURL: 'https://dacna.vercel.app/',
-  timeout: 80000,
+  timeout: 10000,
 })
 
 callAPIWithToken.interceptors.request.use(
