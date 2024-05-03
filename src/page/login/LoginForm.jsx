@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './LoginForm.scss';
-import { loginUser } from '../../api/userApi'; // Import function to check login from your API
+import { loginUser } from 'api/userApi';
 
 const LoginForm = () => {
   const [formData, setFormData] = useState({
@@ -8,28 +8,37 @@ const LoginForm = () => {
     password: '',
   });
 
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(null); // Add a new state variable for success message
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
-      ...formData,
+     ...formData,
       [name]: value,
     });
   };
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
-      const response = await loginUser(formData); // Gọi hàm API để kiểm tra đăng nhập
-      if (response.success) {
+      const response = await loginUser(formData);
+
+      if (response) {
+        setSuccess('Đăng nhập thành công!'); // Set success message
         console.log('Đăng nhập thành công!');
         // Redirect to dashboard or perform other actions for successful login
       } else {
+        setError(response.message); // Set error message only when login fails
         console.log('Đăng nhập thất bại:', response.message);
-        // Hiển thị thông báo lỗi hoặc thực hiện các hành động khác cho đăng nhập thất bại
       }
     } catch (error) {
+      setError(error.message); // Set error message
       console.error('Lỗi khi đăng nhập:', error);
-      // Xử lý lỗi nếu có
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -55,7 +64,9 @@ const LoginForm = () => {
         />
       </label>
       <br />
-      <button type="submit">Login</button>
+      {error && <div style={{ color: 'red' }}>{error}</div>}
+      {success && <div style={{ color: 'green' }}>{success}</div>} { /*Display success message*/ }
+      <button type="submit" disabled={loading}>Login</button>
     </form>
   );
 };

@@ -6,7 +6,7 @@ import styled from 'styled-components'
 import styles from './style.module.scss'
 import { useNavigate } from 'react-router-dom'
 import { searchProducts } from 'api/productsApi';
-import Icon from '@ant-design/icons/lib/components/Icon'
+// import Icon from '@ant-design/icons/lib/components/Icon'
 
 const cx = classNames.bind(styles)
 

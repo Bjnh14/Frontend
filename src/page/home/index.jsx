@@ -1,5 +1,5 @@
 import { Col, Flex, Row, Typography, Button } from 'antd'
-import { getProducts, getNewProducts } from 'api/productsApi'
+import { getNewProducts } from 'api/productsApi'
 import classNames from 'classnames/bind'
 import { useEffect, useState } from 'react'
 import styles from './styles.module.scss'

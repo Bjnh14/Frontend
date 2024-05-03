@@ -1,9 +1,14 @@
 import { callAPIWithToken } from './axiosConfig'
 
-export const loginUser = () => {
+export const loginUser = (userData) => {
+  const {email, password} = userData;
   return callAPIWithToken({
     url: '/auth/log-in',
     method: 'POST',
+    data: {
+      email: email,
+      password: password
+    }
   })
 }
 
